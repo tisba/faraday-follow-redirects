@@ -4,7 +4,9 @@
 [![Gem](https://img.shields.io/gem/v/faraday-follow_redirects.svg?style=flat-square)](https://rubygems.org/gems/faraday-follow_redirects)
 [![License](https://img.shields.io/github/license/tisba/faraday-follow_redirects.svg?style=flat-square)](LICENSE.md)
 
-Faraday 2.x compatible extraction of FaradayMiddleware::FollowRedirects.
+Faraday 2.x compatible extraction of `FaradayMiddleware::FollowRedirects`. If you are still using Faraday 1.x, check out https://github.com/lostisland/faraday_middleware.
+
+This gem is based on the deprecated [`FaradayMiddleware::FollowRedirects` (v1.2.0)](https://github.com/lostisland/faraday_middleware/blob/v1.2.0/lib/faraday_middleware/response/follow_redirects.rb).
 
 ## Installation
 
@@ -31,7 +33,11 @@ gem install faraday-follow_redirects
 ```ruby
 require 'faraday/follow_redirects'
 
-# TODO
+Faraday.new(url: url) do |faraday|
+  faraday.use Faraday::FollowRedirects::Middleware
+
+  faraday.adapter Faraday.default_adapter
+end
 ```
 
 ## Development
