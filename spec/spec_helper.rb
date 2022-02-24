@@ -6,6 +6,7 @@ if ENV['COVERAGE']
 end
 
 require 'faraday'
+require 'webmock/rspec'
 require_relative '../lib/faraday/follow_redirects'
 
 RSpec.configure do |config|
