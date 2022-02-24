@@ -295,6 +295,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
 
       context 'with standards compliancy enabled' do
         let(:middleware_options) { { standards_compliant: true } }
+
         it_behaves_like 'a replayed redirection', code
       end
     end
@@ -308,6 +309,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
 
     context 'with standards compliancy enabled' do
       let(:middleware_options) { { standards_compliant: true } }
+
       it_behaves_like 'a successful redirection', 303
       it_behaves_like 'a forced GET redirection', 303
     end
@@ -321,6 +323,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
 
     context 'with standards compliancy enabled' do
       let(:middleware_options) { { standards_compliant: true } }
+
       it_behaves_like 'a successful redirection', 307
       it_behaves_like 'a replayed redirection', 307
     end
@@ -334,6 +337,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
 
     context 'with standards compliancy enabled' do
       let(:middleware_options) { { standards_compliant: true } }
+
       it_behaves_like 'a successful redirection', 308
       it_behaves_like 'a replayed redirection', 308
     end
