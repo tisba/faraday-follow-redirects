@@ -37,3 +37,19 @@ Packaging/RequireRelativeHardcodingLib:
   Exclude:
     - bin/**/*
     - spec/**/*
+
+RSpec/ExampleLength:
+  Max: 15
+
+RSpec/NestedGroups:
+  Max: 4
+
+Metrics/MethodLength:
+  Max: 12
+
+# FIXME: Prevents Ruby 3.1 incompatibility error. You can enable
+#        this cop when Ruby 2.4 support is dropped.
+#
+#        See https://github.com/rubocop/rubocop/issues/10258
+Layout/BlockAlignment:
+  Enabled: false
