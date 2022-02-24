@@ -3,4 +3,4 @@ set -euo pipefail
 IFS=$'\n\t'
 set -vx
 
-bundle exec rubocop --format progress
+bundle exec rubocop --parallel --format progress
