@@ -9,7 +9,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     stub_request(:get, 'https://www.site-b.com/')
 
     connection = Faraday.new do |conn|
-      conn.use Faraday::FollowRedirects::Middleware
+      conn.use described_class
       conn.adapter Faraday.default_adapter
     end
 
@@ -25,7 +25,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     stub_request(:get, 'https://www.site-b.com/')
 
     connection = Faraday.new do |conn|
-      conn.use Faraday::FollowRedirects::Middleware
+      conn.use described_class
       conn.adapter Faraday.default_adapter
     end
 
@@ -41,7 +41,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     stub_request(:get, 'https://www.site-b.com/')
 
     connection = Faraday.new do |conn|
-      conn.use Faraday::FollowRedirects::Middleware
+      conn.use described_class
       conn.adapter Faraday.default_adapter
     end
 
@@ -57,7 +57,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     stub_request(:get, 'https://www.site-b.com/')
 
     connection = Faraday.new do |conn|
-      conn.use Faraday::FollowRedirects::Middleware
+      conn.use described_class
       conn.adapter Faraday.default_adapter
     end
 
@@ -73,7 +73,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     stub_request(:get, 'https://www.site-b.com/')
 
     connection = Faraday.new do |conn|
-      conn.use Faraday::FollowRedirects::Middleware
+      conn.use described_class
       conn.adapter Faraday.default_adapter
     end
 
