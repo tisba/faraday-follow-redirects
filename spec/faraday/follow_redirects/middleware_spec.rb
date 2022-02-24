@@ -173,8 +173,8 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     end
   end
 
-  context 'when clear_authorization_header option' do
-    context 'is false' do
+  describe 'clear_authorization_header option' do
+    context 'when set to false' do
       it 'redirects with the original authorization headers' do
         conn = connection(clear_authorization_header: false) do |stub|
           stub.get('/redirect') do
@@ -192,8 +192,8 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
       end
     end
 
-    context 'is true' do
-      context 'redirect to same host' do
+    context 'when set to true' do
+      context 'when redirect to same host' do
         it 'redirects with the original authorization headers' do
           conn = connection do |stub|
             stub.get('http://localhost/redirect') do
@@ -211,7 +211,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
         end
       end
 
-      context 'redirect to same host with explicitly port' do
+      context 'when redirect to same host with explicitly port' do
         it 'redirects with the original authorization headers' do
           conn = connection do |stub|
             stub.get('http://localhost/redirect') do
@@ -229,7 +229,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
         end
       end
 
-      context 'redirect to different scheme' do
+      context 'when redirect to different scheme' do
         it 'redirects without original authorization headers' do
           conn = connection do |stub|
             stub.get('http://localhost/redirect') do
@@ -247,7 +247,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
         end
       end
 
-      context 'redirect to different host' do
+      context 'when redirect to different host' do
         it 'redirects without original authorization headers' do
           conn = connection do |stub|
             stub.get('http://localhost/redirect') do
@@ -265,7 +265,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
         end
       end
 
-      context 'redirect to different port' do
+      context 'when redirect to different port' do
         it 'redirects without original authorization headers' do
           conn = connection do |stub|
             stub.get('http://localhost:9090/redirect') do
@@ -286,10 +286,10 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
   end
 
   [301, 302].each do |code|
-    context "for an HTTP #{code} response" do
+    describe "for an HTTP #{code} response" do
       it_behaves_like 'a successful redirection', code
 
-      context 'by default' do
+      describe 'default' do
         it_behaves_like 'a forced GET redirection', code
       end
 
@@ -301,8 +301,8 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     end
   end
 
-  context 'for an HTTP 303 response' do
-    context 'by default' do
+  context 'with an HTTP 303 response' do
+    describe 'default' do
       it_behaves_like 'a successful redirection', 303
       it_behaves_like 'a forced GET redirection', 303
     end
@@ -315,8 +315,8 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     end
   end
 
-  context 'for an HTTP 307 response' do
-    context 'by default' do
+  context 'with an HTTP 307 response' do
+    describe 'default' do
       it_behaves_like 'a successful redirection', 307
       it_behaves_like 'a replayed redirection', 307
     end
@@ -329,8 +329,8 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     end
   end
 
-  context 'for an HTTP 308 response' do
-    context 'by default' do
+  context 'with an HTTP 308 response' do
+    describe 'default' do
       it_behaves_like 'a successful redirection', 308
       it_behaves_like 'a replayed redirection', 308
     end
