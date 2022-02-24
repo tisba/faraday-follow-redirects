@@ -1,8 +1,8 @@
 # Faraday Follow Redirects
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tisba/faraday-follow_redirects/ci)](https://github.com/tisba/faraday-follow_redirects/actions?query=branch%3Amain)
-[![Gem](https://img.shields.io/gem/v/faraday-follow_redirects.svg?style=flat-square)](https://rubygems.org/gems/faraday-follow_redirects)
-[![License](https://img.shields.io/github/license/tisba/faraday-follow_redirects.svg?style=flat-square)](LICENSE.md)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tisba/faraday-follow_redirects/ci)](https://github.com/tisba/faraday-follow-redirects/actions?query=branch%3Amain)
+[![Gem](https://img.shields.io/gem/v/faraday-follow-redirects.svg?style=flat-square)](https://rubygems.org/gems/faraday-follow-redirects)
+[![License](https://img.shields.io/github/license/tisba/faraday-follow-redirects.svg?style=flat-square)](LICENSE.md)
 
 Faraday 2.x compatible extraction of `FaradayMiddleware::FollowRedirects`. If you are still using Faraday 1.x, check out https://github.com/lostisland/faraday_middleware.
 
