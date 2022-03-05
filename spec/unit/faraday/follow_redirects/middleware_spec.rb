@@ -243,7 +243,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
             req.headers['Authorization'] = 'failed'
           end
 
-          expect(response.body).to eq nil
+          expect(response.body).to be_nil
         end
       end
 
@@ -261,7 +261,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
             req.headers['Authorization'] = 'failed'
           end
 
-          expect(response.body).to eq nil
+          expect(response.body).to be_nil
         end
       end
 
@@ -279,7 +279,7 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
             req.headers['Authorization'] = 'failed'
           end
 
-          expect(response.body).to eq nil
+          expect(response.body).to be_nil
         end
       end
     end
