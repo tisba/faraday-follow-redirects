@@ -31,6 +31,7 @@ gem install faraday-follow_redirects
 ## Usage
 
 ```ruby
+require 'faraday'
 require 'faraday/follow_redirects'
 
 Faraday.new(url: url) do |faraday|
