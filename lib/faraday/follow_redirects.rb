@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'faraday'
 require_relative 'follow_redirects/middleware'
 require_relative 'follow_redirects/redirect_limit_reached'
 require_relative 'follow_redirects/version'
