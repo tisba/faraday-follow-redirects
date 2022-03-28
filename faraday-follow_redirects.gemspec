@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   DESC
   spec.license = 'MIT'
 
-  github_uri = "https://github.com/tisba/#{spec.name}"
+  github_uri = "https://github.com/tisba/faraday-follow-redirects"
 
   spec.homepage = github_uri
 
