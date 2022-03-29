@@ -10,6 +10,7 @@ tmp/
 
 *.gem
 Gemfile.lock
+/gemfiles/*.lock
 
 .rvmrc
 .ruby-version
