@@ -4,7 +4,7 @@
 [![Gem](https://img.shields.io/gem/v/faraday-follow_redirects.svg?style=flat-square)](https://rubygems.org/gems/faraday-follow_redirects)
 [![License](https://img.shields.io/github/license/tisba/faraday-follow-redirects.svg?style=flat-square)](LICENSE.md)
 
-Faraday 2.x compatible extraction of `FaradayMiddleware::FollowRedirects`. If you are still using Faraday 1.x, check out https://github.com/lostisland/faraday_middleware.
+Faraday 2.x compatible extraction of `FaradayMiddleware::FollowRedirects`. This gem will also work with Faraday 1.x, to support gem codebases which can work with Faraday 1.x or 2.x. For the former standard version of this middleware for Faraday 1.x, check out https://github.com/lostisland/faraday_middleware.
 
 This gem is based on the deprecated [`FaradayMiddleware::FollowRedirects` (v1.2.0)](https://github.com/lostisland/faraday_middleware/blob/v1.2.0/lib/faraday_middleware/response/follow_redirects.rb).
 
@@ -50,6 +50,13 @@ To install this gem onto your local machine, run `rake build`.
 
 To release a new version, make a commit with a message such as "Bumped to 0.0.2" and then run `rake release`.
 See how it works [here](https://bundler.io/guides/creating_gem.html#releasing-the-gem).
+
+### Appraisal for testing multiple versions of dependencies
+
+We use [appraisal](https://github.com/thoughtbot/appraisal) to test against both faraday 1.x and 2.x, and `./bin/test` will run tests against both. To run tests against just one you could:
+
+    bundle exec appraisal faraday_1 rspec
+    bundle exec appraisal faraday_2 rspec
 
 ## Contributing
 
