@@ -51,6 +51,8 @@ To install this gem onto your local machine, run `rake build`.
 To release a new version, make a commit with a message such as "Bumped to 0.0.2" and then run `rake release`.
 See how it works [here](https://bundler.io/guides/creating_gem.html#releasing-the-gem).
 
+We only supports non-EOL versions of Ruby. See [Ruby Maintenance Branches](https://www.ruby-lang.org/en/downloads/branches/) for the list of non-EOL Rubies.
+
 ### Appraisal for testing multiple versions of dependencies
 
 We use [appraisal](https://github.com/thoughtbot/appraisal) to test against both faraday 1.x and 2.x, and `./bin/test` will run tests against both. To run tests against just one you could:
