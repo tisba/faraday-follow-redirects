@@ -34,8 +34,7 @@ gem install faraday-follow_redirects
 require 'faraday/follow_redirects'
 
 Faraday.new(url: url) do |faraday|
-  faraday.use Faraday::FollowRedirects::Middleware
-
+  faraday.response :follow_redirects # use Faraday::FollowRedirects::Middleware
   faraday.adapter Faraday.default_adapter
 end
 ```
