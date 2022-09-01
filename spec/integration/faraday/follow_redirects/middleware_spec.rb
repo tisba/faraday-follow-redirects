@@ -80,4 +80,22 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     response = connection.get 'http://www.site-a.com'
     expect(response.env[:url].to_s).to eq('https://www.site-b.com/')
   end
+
+  describe 'usage via alias' do
+    it 'redirects on 301' do
+      stub_request(:get, 'http://www.site-a.com/').to_return(
+        status: 301,
+        headers: { 'Location' => 'https://www.site-b.com/' }
+      )
+      stub_request(:get, 'https://www.site-b.com/')
+
+      connection = Faraday.new do |conn|
+        conn.response :follow_redirects
+        conn.adapter Faraday.default_adapter
+      end
+
+      response = connection.get 'http://www.site-a.com'
+      expect(response.env[:url].to_s).to eq('https://www.site-b.com/')
+    end
+  end
 end
