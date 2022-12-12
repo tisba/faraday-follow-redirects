@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors = ['Sebastian Cohnen']
   spec.email = ['tisba@users.noreply.github.com']
 
-  spec.summary = 'Faraday 2.x compatible extraction of FaradayMiddleware::FollowRedirects'
+  spec.summary = 'Faraday 1.x and 2.x compatible extraction of FaradayMiddleware::FollowRedirects'
   spec.description = <<~DESC
-    Faraday 2.x compatible extraction of FaradayMiddleware::FollowRedirects.
+    Faraday 1.x and 2.x compatible extraction of FaradayMiddleware::FollowRedirects.
   DESC
   spec.license = 'MIT'
 
@@ -24,8 +24,7 @@ Gem::Specification.new do |spec|
     'documentation_uri' => "http://www.rubydoc.info/gems/#{spec.name}/#{spec.version}",
     'homepage_uri' => spec.homepage,
     'rubygems_mfa_required' => 'true',
-    'source_code_uri' => github_uri,
-    'wiki_uri' => "#{github_uri}/wiki"
+    'source_code_uri' => github_uri
   }
 
   spec.files = Dir['lib/**/*', 'README.md', 'LICENSE.md', 'CHANGELOG.md']
