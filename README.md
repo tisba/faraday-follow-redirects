@@ -8,6 +8,8 @@ Faraday 2.x compatible extraction of `FaradayMiddleware::FollowRedirects`. This 
 
 This gem is based on the deprecated [`FaradayMiddleware::FollowRedirects` (v1.2.0)](https://github.com/lostisland/faraday_middleware/blob/v1.2.0/lib/faraday_middleware/response/follow_redirects.rb).
 
+We only supports non-EOL versions of Ruby. See [Ruby Maintenance Branches](https://www.ruby-lang.org/en/downloads/branches/) for the list of non-EOL Rubies. 
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -49,8 +51,6 @@ To install this gem onto your local machine, run `rake build`.
 
 To release a new version, make a commit with a message such as "Bumped to 0.0.2" and then run `rake release`.
 See how it works [here](https://bundler.io/guides/creating_gem.html#releasing-the-gem).
-
-We only supports non-EOL versions of Ruby. See [Ruby Maintenance Branches](https://www.ruby-lang.org/en/downloads/branches/) for the list of non-EOL Rubies.
 
 ### Appraisal for testing multiple versions of dependencies
 
