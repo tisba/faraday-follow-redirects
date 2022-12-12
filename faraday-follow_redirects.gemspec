@@ -34,14 +34,14 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'faraday', '>= 1', '< 3'
 
   spec.add_development_dependency 'appraisal', '~> 2.4'
-  spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'bundler', '~> 2.3'
   spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'rspec', '~> 3.12'
   spec.add_development_dependency 'simplecov', '~> 0.21.0'
   spec.add_development_dependency 'webmock', '~> 3.14.0'
 
-  spec.add_development_dependency 'rubocop', '~> 1.25.0'
+  spec.add_development_dependency 'rubocop', '~> 1.40.0'
   spec.add_development_dependency 'rubocop-packaging', '~> 0.5.0'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.13'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.8'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.15'
+  spec.add_development_dependency 'rubocop-rspec', '~> 2.15'
 end
