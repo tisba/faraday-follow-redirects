@@ -1,6 +1,6 @@
 # Faraday Follow Redirects
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tisba/faraday-follow-redirects/CI)](https://github.com/tisba/faraday-follow-redirects/actions?query=branch%3Amain)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/tisba/faraday-follow-redirects/CI)](https://github.com/tisba/faraday-follow-redirects/actions?query=branch%3Amain)
 [![Gem](https://img.shields.io/gem/v/faraday-follow_redirects.svg?style=flat-square)](https://rubygems.org/gems/faraday-follow_redirects)
 [![License](https://img.shields.io/github/license/tisba/faraday-follow-redirects.svg?style=flat-square)](LICENSE.md)
 
