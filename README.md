@@ -41,6 +41,15 @@ Faraday.new(url: url) do |faraday|
 end
 ```
 
+## Upgrading from Faraday 1
+
+If you still use Faraday 1, and have uninstalled the `faraday_middleware` gem:
+
+```diff
+-        conn.use FaradayMiddleware::FollowRedirects
++        conn.use Faraday::FollowRedirects::Middleware
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies.
