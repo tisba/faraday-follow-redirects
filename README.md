@@ -41,13 +41,13 @@ Faraday.new(url: url) do |faraday|
 end
 ```
 
-## Upgrading from Faraday 1
+## Upgrading from Faraday 1.x
 
-If you still use Faraday 1, and have uninstalled the `faraday_middleware` gem:
+If you still use Faraday 1.x, and have uninstalled the `faraday_middleware` gem, all you have to change is:
 
 ```diff
--        conn.use FaradayMiddleware::FollowRedirects
-+        conn.use Faraday::FollowRedirects::Middleware
+- conn.use FaradayMiddleware::FollowRedirects
++ conn.use Faraday::FollowRedirects::Middleware
 ```
 
 ## Development
