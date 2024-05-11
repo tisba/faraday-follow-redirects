@@ -8,9 +8,9 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@cacc9f1c0b3f4eb8a16a6bb0ed10897b43b9de49 # v1
         with:
           ruby-version: 3.2
           bundler-cache: true
@@ -27,8 +27,10 @@ jobs:
         ## Due to https://github.com/actions/runner/issues/849,
         ## we have to use quotes for '3.0'
         ruby:
+          # best effort support only
           - "2.6"
           - "2.7"
+          # active support
           - "3.0"
           - "3.1"
           - "3.2"
@@ -37,9 +39,9 @@ jobs:
           - gemfiles/faraday_1.gemfile
           - gemfiles/faraday_2.gemfile
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@cacc9f1c0b3f4eb8a16a6bb0ed10897b43b9de49 # v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
