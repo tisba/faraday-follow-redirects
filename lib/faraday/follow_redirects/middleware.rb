@@ -90,7 +90,7 @@ module Faraday
 
       def update_env(env, request_body, response)
         redirect_from_url = env[:url].to_s
-        redirect_to_url = safe_escape(response['location'] || '')
+        redirect_to_url = safe_escape(response['location'] || response['Location'] || '')
         env[:url] += redirect_to_url
 
         ENV_TO_CLEAR.each { |key| env.delete key }
