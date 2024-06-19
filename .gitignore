@@ -10,9 +10,6 @@ tmp/
 sandbox/
 
 *.gem
-Gemfile.lock
 /gemfiles/*.lock
-
-.rvmrc
 
 .rspec_status
