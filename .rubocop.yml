@@ -1,6 +1,7 @@
 require:
   - rubocop-packaging
   - rubocop-performance
+  - rubocop-rake
   - rubocop-rspec
 
 inherit_mode:
@@ -23,21 +24,6 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*.rb
-
-Layout/EmptyLinesAroundAttributeAccessor: # (0.83)
-  Enabled: true
-
-Layout/LineLength:
-  Exclude:
-    - spec/**/*.rb
-
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
-
-Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-
 
 Packaging/RequireRelativeHardcodingLib:
   Exclude:
