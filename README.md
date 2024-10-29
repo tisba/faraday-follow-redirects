@@ -7,7 +7,7 @@
 [Faraday](https://github.com/lostisland/faraday) middleware to follow HTTP redirects transparently.
 
 > [!IMPORTANT]
-> This is a Faraday 2.x compatible extraction of the deprecated [`FaradayMiddleware::FollowRedirects` (v1.2.0)](https://github.com/lostisland/faraday_middleware/blob/v1.2.0/lib/faraday_middleware/response/follow_redirects.rb). This gem will also work with Faraday 1.x on a > best-effort basis. **Faraday 1.x support is considered deprecated, please update to Faraday 2.x as soon as possible!**
+> This is a Faraday 2.x compatible extraction of the deprecated [`FaradayMiddleware::FollowRedirects` (v1.2.0)](https://github.com/lostisland/faraday_middleware/blob/v1.2.0/lib/faraday_middleware/response/follow_redirects.rb). This gem will also work with Faraday 1.x on a best-effort basis. **Faraday 1.x support is considered deprecated, please update to Faraday 2.x as soon as possible!**
 >
 > We only support non-EOL versions of Ruby. See [Ruby Maintenance Branches](https://www.ruby-lang.org/en/downloads/branches/) for the list of non-EOL Rubies.
 
