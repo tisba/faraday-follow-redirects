@@ -8,7 +8,7 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@c04af2bb7258bb6a03df1d3c1865998ac9390972 # v1
         with:
@@ -36,7 +36,7 @@ jobs:
           - gemfiles/faraday_1.gemfile
           - gemfiles/faraday_2.gemfile
     steps:
-      - uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@c04af2bb7258bb6a03df1d3c1865998ac9390972 # v1
         with:
