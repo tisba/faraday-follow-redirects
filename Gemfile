@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+ruby file: '.ruby-version' unless defined?(Appraisal)
+
 gemspec
 
 gem 'appraisal'
