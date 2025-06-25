@@ -4,11 +4,15 @@ on:
   - push
   - pull_request
 
+permissions: {}
+
 jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          persist-credentials: false
       - name: Set up Ruby
         uses: ruby/setup-ruby@13e7a03dc3ac6c3798f4570bfead2aed4d96abfb # v1
         with:
@@ -33,11 +37,16 @@ jobs:
           - "3.2" # EOL: 2026-03-31 (expected)
           - "3.3" # EOL: 2027-03-31 (expected)
           - "3.4"
+          # try Ruby head too
+          - "head"
         gemfile:
           - gemfiles/faraday_1.gemfile
           - gemfiles/faraday_2.gemfile
+    continue-on-error: ${{ matrix.ruby == 'head' }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          persist-credentials: false
       - name: Set up Ruby
         uses: ruby/setup-ruby@13e7a03dc3ac6c3798f4570bfead2aed4d96abfb # v1
         with:
