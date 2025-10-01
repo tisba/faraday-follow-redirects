@@ -16,7 +16,7 @@ jobs:
           role-to-assume: rg_oidc_akr_het5dpsv2r1sv4xzcsp7
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4
         with:
-          persists-credentials: false
+          persist-credentials: false
       - name: Set remote URL
         run: |
           # Attribute commits to the last committer on HEAD
