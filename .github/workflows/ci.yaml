@@ -10,7 +10,7 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v4
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v4
         with:
           persist-credentials: false
       - name: Set up Ruby
@@ -44,7 +44,7 @@ jobs:
           - gemfiles/faraday_2.gemfile
     continue-on-error: ${{ matrix.ruby == 'head' }}
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v4
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v4
         with:
           persist-credentials: false
       - name: Set up Ruby
