@@ -4,6 +4,10 @@
 
 * …
 
+## 0.5.0 (2025-12-25)
+
+* Removes upper Ruby version constraint.
+
 ## 0.4.0 (2025-10-01)
 
 This release contains no user facing changes.
