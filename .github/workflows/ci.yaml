@@ -37,6 +37,7 @@ jobs:
           - "3.2" # EOL: 2026-03-31 (expected)
           - "3.3" # EOL: 2027-03-31 (expected)
           - "3.4"
+          - "4.0"
           # try Ruby head too
           - "head"
         gemfile:
