@@ -6,7 +6,10 @@
 
 ## 0.5.0 (2025-12-25)
 
-* Removes upper Ruby version constraint.
+This release removes the upper Ruby version constraint.
+
+* internal: update dev dependencies
+* internal: use Ruby 4 by default for development
 
 ## 0.4.0 (2025-10-01)
 
