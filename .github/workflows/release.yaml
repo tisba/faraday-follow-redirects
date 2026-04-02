@@ -24,7 +24,7 @@ jobs:
           git config --global user.name "$(git log -1 --pretty=format:'%an')"
           git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
       - name: Set up Ruby
-        uses: ruby/setup-ruby@8d27f39a5e7ad39aebbcbd1324f7af020229645c # v1
+        uses: ruby/setup-ruby@3ff19f5e2baf30647122352b96108b1fbe250c64 # v1
         with:
           bundler-cache: true
       - name: Release
