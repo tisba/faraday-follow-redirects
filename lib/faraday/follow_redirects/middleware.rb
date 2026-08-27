@@ -28,6 +28,9 @@ module Faraday
       # Keys in env hash which will get cleared between requests
       ENV_TO_CLEAR    = Set.new %i[status response response_headers]
 
+      CONTENT_HEADERS = %w[Content-Type Content-Length Content-Encoding Content-Language
+                           Content-Location Transfer-Encoding Digest Last-Modified].freeze
+
       # Default value for max redirects followed
       FOLLOW_LIMIT = 3
 
@@ -95,16 +98,20 @@ module Faraday
 
         ENV_TO_CLEAR.each { |key| env.delete key }
 
-        if convert_to_get?(response)
-          env[:method] = :get
-          env[:body] = nil
-        else
-          env[:body] = request_body
-        end
-
+        update_body(env, request_body, response)
         clear_authorization_header(env, redirect_from_url, redirect_to_url)
 
         env
+      end
+
+      def update_body(env, request_body, response)
+        if convert_to_get?(response)
+          env[:method] = :get
+          env[:body] = nil
+          CONTENT_HEADERS.each { |header| env[:request_headers].delete(header) }
+        else
+          env[:body] = request_body
+        end
       end
 
       def follow_redirect?(env, response)
