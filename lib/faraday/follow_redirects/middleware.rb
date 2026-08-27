@@ -80,12 +80,18 @@ module Faraday
           if follow_redirect?(response_env, response)
             raise RedirectLimitReached, response if follows.zero?
 
-            new_request_env = update_env(response_env.dup, request_body, response)
+            new_request_env = update_env(dup_env(response_env), request_body, response)
             callback&.call(response_env, new_request_env)
             response = perform_with_redirection(new_request_env, follows - 1)
           end
         end
         response
+      end
+
+      def dup_env(env)
+        env.dup.tap do |copy|
+          copy[:request_headers] = env[:request_headers].dup
+        end
       end
 
       def update_env(env, request_body, response)
