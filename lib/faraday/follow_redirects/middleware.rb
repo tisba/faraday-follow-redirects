@@ -26,7 +26,7 @@ module Faraday
       # HTTP redirect status codes that this middleware implements
       REDIRECT_CODES  = Set.new [301, 302, 303, 307, 308]
       # Keys in env hash which will get cleared between requests
-      ENV_TO_CLEAR    = Set.new %i[status response response_headers]
+      ENV_TO_CLEAR    = Set.new %i[status reason_phrase response response_body response_headers]
 
       # Default value for max redirects followed
       FOLLOW_LIMIT = 3
