@@ -102,7 +102,7 @@ module Faraday
           env[:body] = request_body
         end
 
-        clear_authorization_header(env, redirect_from_url, redirect_to_url)
+        clear_redirect_headers(env, redirect_from_url, redirect_to_url)
 
         env
       end
@@ -140,6 +140,18 @@ module Faraday
         return env unless @options.fetch(:clear_authorization_header, true)
 
         env[:request_headers].delete(AUTH_HEADER)
+      end
+
+      def clear_redirect_headers(env, from_url, to_url)
+        clear_host_header(env, from_url)
+        clear_authorization_header(env, from_url, to_url)
+      end
+
+      def clear_host_header(env, from_url)
+        from_uri = URI.parse(from_url)
+        return if [from_uri.host, from_uri.port] == [env[:url].host, env[:url].port]
+
+        env[:request_headers].delete('Host')
       end
 
       def redirect_to_same_host?(from_url, to_url)
