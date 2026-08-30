@@ -15,8 +15,8 @@ module Faraday
     # If you wish to persist cookies across redirects, you could use
     # the faraday-cookie_jar gem:
     #
-    #   Faraday.new(:url => url) do |faraday|
-    #     faraday.use FaradayMiddleware::FollowRedirects
+    #   Faraday.new(url: url) do |faraday|
+    #     faraday.response :follow_redirects
     #     faraday.use :cookie_jar
     #     faraday.adapter Faraday.default_adapter
     #   end
@@ -46,10 +46,6 @@ module Faraday
       #                                  (default: false)
       #     :callback                   - A callable used on redirects
       #                                  with the old and new envs
-      #     :cookies                    - An Array of Strings (e.g.
-      #                                  ['cookie1', 'cookie2']) to choose
-      #                                  cookies to be kept, or :all to keep
-      #                                  all cookies (default: []).
       #     :clear_authorization_header - A Boolean indicating whether the request
       #                                  Authorization header should be cleared on
       #                                  redirects (default: true)
