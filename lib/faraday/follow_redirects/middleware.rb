@@ -74,14 +74,14 @@ module Faraday
 
       def perform_with_redirection(env, follows)
         request_body = env[:body]
+        request_body_position = body_position(request_body)
         response = @app.call(env)
 
         response.on_complete do |response_env|
           if follow_redirect?(response_env, response)
             raise RedirectLimitReached, response if follows.zero?
 
-            new_request_env = update_env(response_env.dup, request_body, response)
-            callback&.call(response_env, new_request_env)
+            new_request_env = redirect_env(response_env, request_body, request_body_position, response)
             response = perform_with_redirection(new_request_env, follows - 1)
           end
         end
@@ -122,6 +122,31 @@ module Faraday
 
       def callback
         @options[:callback]
+      end
+
+      def redirect_env(response_env, request_body, request_body_position, response)
+        env = update_env(response_env.dup, request_body, response)
+        callback&.call(response_env, env)
+        replay_body(env[:body], request_body, request_body_position)
+        env
+      end
+
+      def body_position(body)
+        body.pos if body.respond_to?(:pos)
+      rescue IOError, SystemCallError
+        nil
+      end
+
+      def replay_body(body, original_body, position)
+        return unless body.equal?(original_body) && body.respond_to?(:read)
+
+        unless position && body.respond_to?(:seek)
+          raise Faraday::Error, 'cannot replay non-rewindable request body after redirect'
+        end
+
+        body.seek(position)
+      rescue IOError, SystemCallError, ArgumentError => e
+        raise Faraday::Error, "cannot replay request body after redirect: #{e.message}"
       end
 
       # Internal: escapes unsafe characters from an URL which might be a path
