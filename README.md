@@ -11,6 +11,9 @@
 >
 > We only support non-EOL versions of Ruby. See [Ruby Maintenance Branches](https://www.ruby-lang.org/en/downloads/branches/) for the list of non-EOL Rubies.
 
+> [!IMPORTANT]
+> Pull Requests are restricted. Please open an issue first before investing time and effort with bigger changes. See [CONTRUBUTING.md](CONTRUBUTING.md).
+
 ## Installation
 
 Add this line to your application's Gemfile:
