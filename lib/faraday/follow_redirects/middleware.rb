@@ -46,10 +46,6 @@ module Faraday
       #                                  (default: false)
       #     :callback                   - A callable used on redirects
       #                                  with the old and new envs
-      #     :cookies                    - An Array of Strings (e.g.
-      #                                  ['cookie1', 'cookie2']) to choose
-      #                                  cookies to be kept, or :all to keep
-      #                                  all cookies (default: []).
       #     :clear_authorization_header - A Boolean indicating whether the request
       #                                  Authorization header should be cleared on
       #                                  redirects (default: true)
