@@ -109,7 +109,11 @@ module Faraday
       end
 
       def follow_limit
-        @options.fetch(:limit, FOLLOW_LIMIT)
+        limit = @options.fetch(:limit, FOLLOW_LIMIT)
+        finite = !limit.respond_to?(:finite?) || limit.finite?
+        return limit if limit.is_a?(Numeric) && limit.real? && finite
+
+        raise ArgumentError, 'limit must be a finite real number'
       end
 
       def standards_compliant?
