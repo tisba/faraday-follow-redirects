@@ -139,10 +139,8 @@ module Faraday
       end
 
       def redirect_to_same_host?(from_url, to_url)
-        return true if to_url.start_with?('/')
-
         from_uri = URI.parse(from_url)
-        to_uri = URI.parse(to_url)
+        to_uri = from_uri + to_url
 
         [from_uri.scheme, from_uri.host, from_uri.port] ==
           [to_uri.scheme, to_uri.host, to_uri.port]
