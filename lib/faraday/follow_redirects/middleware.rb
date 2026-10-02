@@ -40,7 +40,8 @@ module Faraday
       # Public: Initialize the middleware.
       #
       # options - An options Hash (default: {}):
-      #     :limit                      - A Numeric redirect limit (default: 3)
+      #     :limit                      - An Integer > 0 specifying the redirect
+      #                                  limit (default: 3)
       #     :standards_compliant        - A Boolean indicating whether to respect
       #                                  the HTTP spec when following 301/302
       #                                  (default: false)
@@ -51,14 +52,20 @@ module Faraday
       #                                  redirects (default: true)
       def initialize(app, options = {})
         super(app)
+
         @options = options
+
+        @follow_limit = @options.fetch(:limit, FOLLOW_LIMIT)
+        if @follow_limit.nil? || !(@follow_limit.is_a?(Numeric) && @follow_limit.integer? && @follow_limit.positive?)
+          raise ArgumentError, 'limit must be an integer greater than 0'
+        end
 
         @convert_to_get = Set.new [303]
         @convert_to_get << 301 << 302 unless standards_compliant?
       end
 
       def call(env)
-        perform_with_redirection(env, follow_limit)
+        perform_with_redirection(env, @follow_limit)
       end
 
       private
@@ -106,10 +113,6 @@ module Faraday
       def follow_redirect?(env, response)
         ALLOWED_METHODS.include?(env[:method]) &&
           REDIRECT_CODES.include?(response.status)
-      end
-
-      def follow_limit
-        @options.fetch(:limit, FOLLOW_LIMIT)
       end
 
       def standards_compliant?

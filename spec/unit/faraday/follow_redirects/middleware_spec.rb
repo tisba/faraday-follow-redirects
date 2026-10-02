@@ -132,26 +132,36 @@ RSpec.describe Faraday::FollowRedirects::Middleware do
     end.get('/').body).to eq 'fin'
   end
 
-  it 'raises a Faraday::FollowRedirects::RedirectLimitReached after 3 redirections (by default)' do
-    conn = connection do |stub|
-      stub.get('/')          { [301, { 'Location' => '/redirect1' }, ''] }
-      stub.get('/redirect1') { [301, { 'Location' => '/redirect2' }, ''] }
-      stub.get('/redirect2') { [301, { 'Location' => '/redirect3' }, ''] }
-      stub.get('/redirect3') { [301, { 'Location' => '/found' }, ''] }
-      stub.get('/found')     { [200, { 'Content-Type' => 'text/plain' }, 'fin'] }
+  describe 'limit number of redirects' do
+    it 'raises a Faraday::FollowRedirects::RedirectLimitReached after 3 redirections (by default)' do
+      conn = connection do |stub|
+        stub.get('/')          { [301, { 'Location' => '/redirect1' }, ''] }
+        stub.get('/redirect1') { [301, { 'Location' => '/redirect2' }, ''] }
+        stub.get('/redirect2') { [301, { 'Location' => '/redirect3' }, ''] }
+        stub.get('/redirect3') { [301, { 'Location' => '/found' }, ''] }
+        stub.get('/found')     { [200, { 'Content-Type' => 'text/plain' }, 'fin'] }
+      end
+
+      expect { conn.get('/') }.to raise_error(Faraday::FollowRedirects::RedirectLimitReached)
     end
 
-    expect { conn.get('/') }.to raise_error(Faraday::FollowRedirects::RedirectLimitReached)
-  end
+    it 'raises a Faraday::FollowRedirects::RedirectLimitReached after the initialized limit' do
+      conn = connection(limit: 1) do |stub|
+        stub.get('/')          { [301, { 'Location' => '/redirect1' }, ''] }
+        stub.get('/redirect1') { [301, { 'Location' => '/found' }, ''] }
+        stub.get('/found')     { [200, { 'Content-Type' => 'text/plain' }, 'fin'] }
+      end
 
-  it 'raises a Faraday::FollowRedirects::RedirectLimitReached after the initialized limit' do
-    conn = connection(limit: 1) do |stub|
-      stub.get('/')          { [301, { 'Location' => '/redirect1' }, ''] }
-      stub.get('/redirect1') { [301, { 'Location' => '/found' }, ''] }
-      stub.get('/found')     { [200, { 'Content-Type' => 'text/plain' }, 'fin'] }
+      expect { conn.get('/') }.to raise_error(Faraday::FollowRedirects::RedirectLimitReached)
     end
 
-    expect { conn.get('/') }.to raise_error(Faraday::FollowRedirects::RedirectLimitReached)
+    it 'raises a ArgumentError with invalid limits' do
+      [nil, -1, 0.23, 4.0, Float::NAN, '42', false].each do |limit|
+        expect do
+          connection(limit: limit).get('/')
+        end.to raise_error(ArgumentError, 'limit must be an integer greater than 0')
+      end
+    end
   end
 
   it 'ignore fragments in the Location header' do
