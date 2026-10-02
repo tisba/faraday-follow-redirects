@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-* …
+* `limit` is now checked to be a positive, non-zero `Integer`
+* `Faraday::FollowRedirects::RedirectLimitReached` now has `#next_location`
 
 ## 0.5.0 (2025-12-27)
 
