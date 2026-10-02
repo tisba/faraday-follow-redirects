@@ -75,17 +75,17 @@ module Faraday
           @convert_to_get.include?(response.status)
       end
 
-      def perform_with_redirection(env, follows)
+      def perform_with_redirection(env, remaining)
         request_body = env[:body]
         response = @app.call(env)
 
         response.on_complete do |response_env|
           if follow_redirect?(response_env, response)
-            raise RedirectLimitReached, response if follows.zero?
+            raise RedirectLimitReached.new(response, response['location']) if remaining <= 0
 
             new_request_env = update_env(response_env.dup, request_body, response)
             callback&.call(response_env, new_request_env)
-            response = perform_with_redirection(new_request_env, follows - 1)
+            response = perform_with_redirection(new_request_env, remaining - 1)
           end
         end
         response

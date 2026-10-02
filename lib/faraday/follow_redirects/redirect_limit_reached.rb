@@ -7,11 +7,13 @@ module Faraday
     # Exception thrown when the maximum amount of requests is
     # exceeded.
     class RedirectLimitReached < Faraday::ClientError
-      attr_reader :response
+      attr_reader :response, :next_location
 
-      def initialize(response)
-        super("too many redirects; last one to: #{response['location']}")
+      def initialize(response, next_location)
+        @next_location = next_location
         @response = response
+
+        super("too many redirects; last one to: #{@next_location}")
       end
     end
   end
